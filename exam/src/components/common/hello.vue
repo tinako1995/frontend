@@ -1,0 +1,68 @@
+<template>
+  <section class="index">
+    <div class="hello">
+      <i class="iconfont icon-xihuan"></i><span>{{user.userName}} 歡迎。</span>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      user: { //userInfo
+        userName: null,
+        userId: null
+      } 
+    }
+  },
+  created() {
+    this.getUserInfo()
+  },
+  methods: {
+    getUserInfo() {  //userInfo
+      let userName = this.$cookies.get("cname")
+      let userId = this.$cookies.get("cid")
+      this.user.userName = userName
+      this.user.userId = userId
+    },
+  }
+}
+</script>
+
+
+<style lang="scss" scoped>
+.index {
+  margin-left: 70px;
+  .hello {
+    font-size: 20px;
+    color: #726f70;
+    .icon-xihuan {
+      font-size: 30px;
+      color: #dd6572;
+    }
+  }
+  .msg {
+    .title {
+      font-size: 16px;
+      color: #000;
+      margin-top: 20px;
+      margin-left: 10px;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      overflow: hidden;
+    }
+    li {
+      margin-top: 10px;
+      font-size: 14px;
+      color: lightcoral;
+      cursor: pointer;
+      display: inline-block;
+    }
+  }
+}
+</style>
+
